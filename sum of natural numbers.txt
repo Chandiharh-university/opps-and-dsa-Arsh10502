@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+// Function to calculate the sum of natural numbers
+int sumOfNaturalNumbers(int n) {
+    if (n <= 0) {
+        cout << "Please enter a positive integer." << endl;
+        return 0;
+    }
+    return (n * (n + 1)) / 2; // Using the formula for sum of first n natural numbers
+}
+
+int main() {
+    int n;
+
+    // Input from the user
+    cout << "Enter a positive integer: ";
+    cin >> n;
+
+    // Calling the user-defined function
+    int sum = sumOfNaturalNumbers(n);
+
+    if (sum != 0) {
+        cout << "The sum of the first " << n << " natural numbers is: " << sum << endl;
+    }
+
+    return 0;
+}
