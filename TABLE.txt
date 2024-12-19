@@ -1,0 +1,13 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Name\tAge\tPlace\n";
+
+    
+    cout << "Arsh\t20\tPANJAB\n";
+    cout << "B\t30\tABC\n";
+    cout << "Eve\t22\tParis\n";
+
+    return 0;
+}
