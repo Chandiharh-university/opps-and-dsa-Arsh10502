@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+class Sum {
+public:
+    virtual void calculateSum(int a, int b, int c) {
+        cout << "Sum class sum: " << a + b + c << endl;
+    }
+};
+
+class Derived : public Sum {
+public:
+    void calculateSum(int a, int b, int c) override {
+        cout << "Derived class sum: " << a + b + c << endl;
+    }
+};
+
+int main() {
+    int a, b, c;
+
+    cout << "Enter three integers: ";
+    cin >> a >> b >> c;
+
+   
+    Sum* SumPtr = new Sum();
+    SumPtr->calculateSum(a, b, c);
+
+    Sum* derivedPtr = new Derived();
+    derivedPtr->calculateSum(a, b, c);
+
+    delete SumPtr;
+    delete derivedPtr;
+
+    return 0;
+}
