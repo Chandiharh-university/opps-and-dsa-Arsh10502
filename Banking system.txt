@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string name;
+    int creditScore;
+    double loanAmount;
+    const double MAX_AMOUNT = 100000; 
+
+    cout << "Welcome to the Banking System!\n";
+    cout << "Enter your name: ";
+    getline(cin, name);
+
+    cout << "Enter your credit score: ";
+    cin >> creditScore;
+
+    cout << "Enter the loan amount you are requesting: ";
+    cin >> loanAmount;
+
+    if (creditScore >= 750 && loanAmount <= MAX_AMOUNT) {
+        cout << "Congratulations, " << name << "! Your loan of " << loanAmount << " has been approved.\n";
+    } else if (creditScore >= 650 && creditScore < 750 && loanAmount <= (MAX_AMOUNT * 0.75)) {
+        cout << "Congratulations, " << name << "! Your loan of " << loanAmount << " has been approved.\n";
+    } else if (creditScore >= 550 && creditScore < 650 && loanAmount <= (MAX_AMOUNT * 0.5)) {
+        cout << "Congratulations, " << name << "! Your loan of " << loanAmount << " has been approved.\n";
+    } else {
+        cout << "Sorry, " << name << ". Your loan request of $" << loanAmount << " has been denied.\n";
+    }
+
+    return 0;
+}
