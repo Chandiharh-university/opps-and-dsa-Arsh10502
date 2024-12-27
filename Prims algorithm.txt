@@ -1,0 +1,59 @@
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+int findMinVertex(const vector<int>& key, const vector<bool>& included, int V) {
+    int minValue = INT_MAX, minIndex = -1;
+
+    for (int i = 0; i < V; i++) {
+        if (!included[i] && key[i] < minValue) {
+            minValue = key[i];
+            minIndex = i;
+        }
+    }
+    return minIndex;
+}
+
+void printMST(const vector<int>& parent, const vector<vector<int>>& graph, int V) {
+    cout << "Edge \tWeight\n";
+    for (int i = 1; i < V; i++) {
+        cout << parent[i] << " - " << i << " \t" << graph[i][parent[i]] << endl;
+    }
+}
+
+void primMST(const vector<vector<int>>& graph, int V) {
+    vector<int> parent(V, -1);
+    vector<int> key(V, INT_MAX);
+    vector<bool> included(V, false);
+
+    key[0] = 0;
+
+    for (int i = 0; i < V - 1; i++) {
+        int u = findMinVertex(key, included, V);
+        included[u] = true;
+
+        for (int v = 0; v < V; v++) {
+            if (graph[u][v] && !included[v] && graph[u][v] < key[v]) {
+                parent[v] = u;
+                key[v] = graph[u][v];
+            }
+        }
+    }
+
+    printMST(parent, graph, V);
+}
+
+int main() {
+    vector<vector<int>> graph = {
+        {0, 2, 0, 6, 0},
+        {2, 0, 3, 8, 5},
+        {0, 3, 0, 0, 7},
+        {6, 8, 0, 0, 9},
+        {0, 5, 7, 9, 0}};
+
+    int V = graph.size();
+    primMST(graph, V);
+
+    return 0;
+}
